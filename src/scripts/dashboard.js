@@ -203,6 +203,7 @@ angular.module('adf')
         editable: '@',
         maximizable: '@',
         adfModel: '=',
+        adfId: '=',
         adfWidgetFilter: '='
       },
       controller: function($scope){
@@ -247,6 +248,27 @@ angular.module('adf')
         // edit mode
         $scope.editMode = false;
         $scope.editClass = '';
+
+        $scope.removeDashboardDialog = function(){
+          var removeDashboardScope = $scope.$new();
+          var instance = $modal.open({
+            scope: removeDashboardScope,
+            templateUrl: adfTemplatePath + 'dashboard-delete.html',
+            backdrop: 'static'
+          });
+          var closeModal = function() {
+            // close modal and destroy the scope
+            instance.close();
+            removeDashboardScope.$destroy();
+          };
+          removeDashboardScope.closeDialog = function() {
+              closeModal();
+          };
+          removeDashboardScope.delete = function() {
+            $rootScope.$broadcast('removeDashboard', $scope.adfId);
+            closeModal();
+          };
+        };
 
         $scope.toggleEditMode = function(){
           $scope.editMode = ! $scope.editMode;
