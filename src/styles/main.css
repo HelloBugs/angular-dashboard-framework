@@ -81,3 +81,26 @@ pre.edit {
 .dashboard-modal.widget-fullscreen .modal-dialog {
  width: 98%;
 }
+
+
+.layout-minimap {
+  height: 155px;
+  width: 77%;
+  margin: 0 auto;
+}
+
+.layout-minimap > div {
+    padding: 3px;
+}
+
+.layout-minimap > div > div {
+    background: #f5f7fa;
+    color: transparent;
+    border-radius: 3px;
+    border: 1px solid #e0e5ed;
+    transition: all 0.5s ease;
+}
+
+input[type="radio"].dashboard-select {
+  margin-left: 20px;
+}

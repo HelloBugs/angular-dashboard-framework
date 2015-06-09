@@ -11,9 +11,12 @@
     <div class="form-group">
       <label>Structure</label>
       <div class="radio" ng-repeat="(key, structure) in structures">
-        <label>
-          <input type="radio" value="{{key}}" ng-model="model.structure" ng-change="changeStructure(key, structure)"> {{key}}
-        </label>
+          <input type="radio" class="dashboard-select" value="{{key}}" ng-model="model.structure" ng-change="changeStructure(key, structure)">
+          <div class="layout-minimap">
+            <div ng-repeat="n in keyToMiniMap[key] track by $index" class="col-xs-{{n}}">
+              <div><br/><br/></div>
+            </div>
+          </div>
       </div>
     </div>
   </form>
