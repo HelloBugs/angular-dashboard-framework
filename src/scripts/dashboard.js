@@ -298,6 +298,7 @@ angular.module('adf')
           });
           $scope.changeStructure = function(name, structure){
             $log.info('change structure to ' + name);
+            model.structure = name;
             changeStructure(model, structure);
           };
           editDashboardScope.closeDialog = function(){
