@@ -11,13 +11,15 @@
     <div class="form-group">
       <label>Structure</label>
       <div class="radio row">
-        <div class="col-xs-6" ng-repeat="(key, structure) in structures">
-          <div class="minimap-btn btn btn-default"
-                ng-class="{ 'minimap-selected': key == model.structure}"
-                ng-click="changeStructure(key, structure)">
+        <div class="col-xs-6"
+            ng-repeat="(key, structure) in structures">
+          <div ng-click="changeStructure(key, structure)">
             <div class="layout-minimap">
-              <div ng-repeat="n in keyToMiniMap[key] track by $index" class="col-xs-{{n}}">
-                <div><br/><br/></div>
+              <div ng-repeat="n in keyToMiniMap[key] track by $index"
+                  class="col-xs-{{n}}">
+                <div ng-class="{ 'minimap-selected': key == model.structure}">
+                  <br/><br/>
+                </div>
               </div>
             </div>
           </div>
