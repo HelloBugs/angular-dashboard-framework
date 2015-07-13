@@ -14,6 +14,10 @@ angular.module('adf')
             definition.title = w.title;
           }
 
+          if (!definition.titleTemplateUrl) {
+            definition.titleTemplateUrl = adfTemplatePath + 'widget-title.html';
+          }
+
           // set id for sortable
           if (!definition.wid){
             definition.wid = dashboard.id();
@@ -35,8 +39,12 @@ angular.module('adf')
           // pass config to scope
           $scope.config = config;
 
-          // collapse
-          $scope.isCollapsed = false;
+          // collapse exposed $scope.widgetState property
+         if(!$scope.widgetState){
+             $scope.widgetState ={};
+             $scope.widgetState.isCollapsed= false;
+          }
+
         } else {
           $log.warn('could not find widget ' + definition.type);
         }
@@ -101,7 +109,8 @@ angular.module('adf')
         definition: '=',
         col: '=column',
         editMode: '=',
-        options: '='
+        options: '=',
+        widgetState: '='
       },
 
       controller: function ($scope) {
